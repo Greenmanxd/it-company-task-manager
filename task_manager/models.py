@@ -27,12 +27,16 @@ class Task(models.Model):
         choices=PRIORITY_CHOICES,
         default=MEDIUM
     )
-    task_type = models.OneToOneField(
+    task_type = models.ForeignKey(
         TaskType,
         on_delete=models.CASCADE
     )
     # assignees = ...
 
 
+class Position(models.Model):
+    name = models.CharField(max_length=255)
+
+
 class Worker(AbstractUser):
-    pass
+    position = models.ForeignKey(Position, on_delete=models.CASCADE)
