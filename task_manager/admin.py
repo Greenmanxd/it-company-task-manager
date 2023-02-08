@@ -28,14 +28,21 @@ class WorkerAdmin(UserAdmin):
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        "id",
+        "name",
+        "description",
+        "deadline",
+        "is_completed",
+        "priority",
+        "task_type",
+    )
+    list_filter = ("is_completed", "task_type")
 
 
 @admin.register(TaskType)
 class TaskTypeAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id", "name")
 
 
-@admin.register(Position)
-class PositionAdmin(admin.ModelAdmin):
-    pass
+admin.site.register(Position)
