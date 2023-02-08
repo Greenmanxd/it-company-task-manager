@@ -6,6 +6,14 @@ class TaskType(models.Model):
     name = models.CharField(max_length=255)
 
 
+class Position(models.Model):
+    name = models.CharField(max_length=255)
+
+
+class Worker(AbstractUser):
+    position = models.ForeignKey(Position, on_delete=models.CASCADE)
+
+
 class Task(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -31,12 +39,5 @@ class Task(models.Model):
         TaskType,
         on_delete=models.CASCADE
     )
-    # assignees = ...
 
-
-class Position(models.Model):
-    name = models.CharField(max_length=255)
-
-
-class Worker(AbstractUser):
-    position = models.ForeignKey(Position, on_delete=models.CASCADE)
+    assignees = models.ManyToManyField(Worker, related_name="tasks")
