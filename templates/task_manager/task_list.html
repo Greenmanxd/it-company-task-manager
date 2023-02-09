@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  {% if task_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Deadline</th>
+        <th>Is Completed</th>
+      </tr>
+      {% for task in task_list %}
+        <tr>
+          <th>{{ task.id }}</th>
+          <th>{{ task.name }}</th>
+          <th>{{ task.description }}</th>
+          <th>{{ task.deadline }}</th>
+          <th>{{ task.is_completed }}</th>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    There are no tasks
+  {% endif %}
+{% endblock %}
