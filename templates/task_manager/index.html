@@ -1,1 +1,17 @@
 {% extends "base.html" %}
+
+
+{% block content %}
+  <h1>Task Manager Home</h1>
+  <p>We have:</p>
+  <ul>
+    <li><strong>Workers: </strong>{{ num_workers }}</li>
+    <li><strong>Tasks: </strong>{{ num_tasks }}</li>
+      <ul>
+        <li><strong>In Progres: </strong>{{ in_proces_tasks }}</li>
+      </ul>
+  </ul>
+  <p>You have visited thin page
+    {{ num_visits }} time{{ num_visits|pluralize }}
+  </p>
+{% endblock %}
