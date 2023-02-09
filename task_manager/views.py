@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import generic
 
 from task_manager.models import Task, TaskType, Worker, Position
 
@@ -24,3 +25,9 @@ def index(request):
     }
 
     return render(request, "task_manager/index.html", context=context)
+
+
+class WorkerListView(generic.ListView):
+    model = Worker
+    paginate_by = 5
+    template_name = "task_manager/worker_list.html"

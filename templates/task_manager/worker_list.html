@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <input type="submit" value="submit" class="btn btn-primary">
+  {% if worker_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Position</th>
+      </tr>
+      {% for worker in worker_list %}
+        <tr>
+          <td>{{ worker.username }}</td>
+          {% if worker.first_name and worker.last_name %}
+            <td>{{ worker.first_name }}</td>
+            <td>{{ worker.last_name }}</td>
+          {% else %}
+            <td>Not provide</td>
+            <td>Not provide</td>
+          {% endif %}
+          <td>{{ worker.position }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+{% endblock %}
