@@ -2,7 +2,6 @@
 
 
 {% block content %}
-  <input type="submit" value="submit" class="btn btn-primary">
   {% if worker_list %}
     <table class="table">
       <tr>
@@ -14,6 +13,7 @@
       </tr>
       {% for worker in worker_list %}
         <tr>
+          <td>{{ worker.id }}</td>
           <td>{{ worker.username }}</td>
           {% if worker.first_name and worker.last_name %}
             <td>{{ worker.first_name }}</td>
