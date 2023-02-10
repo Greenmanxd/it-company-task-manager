@@ -51,6 +51,11 @@ class WorkerPositionUpdateView(generic.UpdateView):
     success_url = reverse_lazy("task_manager:worker-list")
 
 
+class WorkerDeleteView(generic.DeleteView):
+    model = Worker
+    success_url = reverse_lazy("")
+
+
 class TaskListView(generic.ListView):
     model = Task
     paginate_by = 5
