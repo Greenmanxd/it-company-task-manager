@@ -2,6 +2,7 @@
 
 
 {% block content %}
+  <a href="{% url "task_manager:worker-update" pk=worker.id %}" class="btn btn-primary">Update Position</a>
   <p><strong>Username: </strong>{{ worker.username }}</p>
   <p><strong>First name: </strong>{{ worker.first_name }}</p>
   <p><strong>Last name: </strong>{{ worker.last_name }}</p>
