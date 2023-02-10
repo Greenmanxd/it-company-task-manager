@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Completed</th>
+      <th>Deadline</th>
+      <th>Priority</th>
+    </tr>
+    <tr>
+      <td>{{ task.id }}</td>
+      <td>{{ task.name }}</td>
+      <td>{{ task.description }}</td>
+      <td>{{ task.is_completed }}</td>
+      <td>{{ task.deadline }}</td>
+      <td>{{ task.priority }}</td>
+    </tr>
+  </table>
+{% endblock %}

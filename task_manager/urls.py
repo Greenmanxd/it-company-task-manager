@@ -8,7 +8,8 @@ from task_manager.views import (
     WorkerCreateView,
     WorkerDetailView,
     WorkerPositionUpdateView,
-    WorkerDeleteView
+    WorkerDeleteView,
+    TaskDetailView
 )
 
 urlpatterns = [
@@ -21,6 +22,7 @@ urlpatterns = [
     path("worker/<int:pk>/delete", WorkerDeleteView.as_view(), name="worker-delete"),
 
     path("tasks/", TaskListView.as_view(), name="task-list"),
+    path("tasks/<int:pk>", TaskDetailView.as_view(), name="task-detail"),
 
     path("task-types/", TaskTypeView.as_view(), name="task-type-list")
 ]

@@ -62,6 +62,11 @@ class TaskListView(generic.ListView):
     template_name = "task_manager/task_list.html"
 
 
+class TaskDetailView(generic.DetailView):
+    model = Task
+    template_name = "task_manager/task_detail.html"
+
+
 class TaskTypeView(generic.ListView):
     model = TaskType
     paginate_by = 5
