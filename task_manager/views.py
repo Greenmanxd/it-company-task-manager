@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
+from task_manager.forms import WorkerCreationForm
 from task_manager.models import Task, TaskType, Worker, Position
 
 
@@ -33,8 +34,14 @@ class WorkerListView(generic.ListView):
     template_name = "task_manager/worker_list.html"
 
 
+class WorkerDetailView(generic.DetailView):
+    model = Worker
+    template_name = "task_manager/worker_detail.html"
+
+
 class WorkerCreateView(generic.CreateView):
     model = Worker
+    form_class = WorkerCreationForm
 
 
 class TaskListView(generic.ListView):
