@@ -20,4 +20,14 @@
       <td>{{ task.priority }}</td>
     </tr>
   </table>
+  <h3>Work on this task:</h3>
+  {% for worker in task.assignees.all %}
+    <ul>
+      <li>{{ worker.username }}</li>
+      <li>{{ worker.first_name }}</li>
+      <li>{{ worker.last_name }}</li>
+      <li>{{ worker.position }}</li>
+    </ul>
+    <hr>
+  {% endfor %}
 {% endblock %}

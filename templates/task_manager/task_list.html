@@ -3,6 +3,9 @@
 
 {% block content %}
   {% if task_list %}
+    <a href="{% url "task_manager:task-create" %}" class="btn btn-primary" style="float: right">
+      Create
+    </a>
     <table class="table">
       <tr>
         <th>ID</th>
