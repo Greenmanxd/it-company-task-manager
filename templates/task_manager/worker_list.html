@@ -2,6 +2,7 @@
 
 
 {% block content %}
+  <a href="{% url "task_manager:worker-create" %}" class="btn btn-primary">Create</a>
   {% if worker_list %}
     <table class="table">
       <tr>
