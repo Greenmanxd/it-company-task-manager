@@ -33,7 +33,17 @@ class WorkerListView(generic.ListView):
     template_name = "task_manager/worker_list.html"
 
 
+class WorkerCreateView(generic.CreateView):
+    model = Worker
+
+
 class TaskListView(generic.ListView):
     model = Task
     paginate_by = 5
     template_name = "task_manager/task_list.html"
+
+
+class TaskTypeView(generic.ListView):
+    model = TaskType
+    paginate_by = 5
+    template_name = "task_manager/task_type_list.html"
