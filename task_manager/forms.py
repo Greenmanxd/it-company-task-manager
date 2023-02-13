@@ -31,7 +31,6 @@ class TaskForm(forms.ModelForm):
             'priority',
             'deadline',
             'assignees',
-            'is_completed',
         ]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),

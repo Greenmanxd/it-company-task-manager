@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <h1>
+      Are you sure yo want to delete {{ tasktype.name }} task type. <br>
+      <strong>All tasks with this type will be delete as well!!!</strong>
+    </h1>
+    <input type="submit" value="Yes" class="btn btn-danger">
+    <a href="{% url "task_manager:task-type-list" %}" class="btn btn-success ">No</a>
+  </form>
+{% endblock %}

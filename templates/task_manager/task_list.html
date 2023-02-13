@@ -11,6 +11,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Description</th>
+        <th>Task type</th>
         <th>Deadline</th>
         <th>Is Completed</th>
       </tr>
@@ -19,8 +20,14 @@
           <td>{{ task.id }}</td>
           <td><a href="{% url "task_manager:task-detail" pk=task.id %}">{{ task.name }}</a></td>
           <td>{{ task.description }}</td>
+          <td>{{ task.task_type }}</td>
           <td>{{ task.deadline }}</td>
           <td>{{ task.is_completed }}</td>
+          <td>
+            <a href="{% url "task_manager:toggle_status" pk=task.id %}" class="btn btn-success">
+              {{ task.is_completed|yesno:"Not complete, Complete" }}
+            </a>
+          </td>
         </tr>
       {% endfor %}
     </table>

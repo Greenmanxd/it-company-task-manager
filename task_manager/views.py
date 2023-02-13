@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
 from task_manager.forms import (
     WorkerCreationForm,
     WorkerPositionUpdateForm,
-    TaskForm
+    TaskForm,
 )
 from task_manager.models import Task, TaskType, Worker, Position
 
@@ -83,7 +83,34 @@ class TaskUpdateView(generic.UpdateView):
     success_url = reverse_lazy("task_manager:task-list")
 
 
+def toggle_status(request, pk):
+    status = Task.objects.get(id=pk)
+    status.is_completed ^= True
+    status.save()
+    return redirect(reverse_lazy("task_manager:task-list"))
+
+
 class TaskTypeView(generic.ListView):
     model = TaskType
     paginate_by = 5
     template_name = "task_manager/task_type_list.html"
+
+
+class TaskTypeCreateView(generic.CreateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("task_manager:task-type-list")
+    template_name = "task_manager/task_type_form.html"
+
+
+class TaskTypeUpdateView(generic.UpdateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("task_manager:task-type-list")
+    template_name = "task_manager/task_type_form.html"
+
+
+class TaskTypeDeleteView(generic.DeleteView):
+    model = TaskType
+    success_url = reverse_lazy("task_manager:task-type-list")
+    template_name = "task_manager/task_type_confirm_delete.html"
