@@ -13,4 +13,7 @@
   <p><strong>Last name: </strong>{{ worker.last_name }}</p>
   <p><strong>Position: </strong>{{ worker.position }}</p>
   <p><strong>Admin: </strong>{{ worker.is_superuser }}</p>
+  <a href="{% url "task_manager:worker-list" %}" class="btn btn-secondary">
+    Return
+  </a>
 {% endblock %}

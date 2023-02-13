@@ -20,14 +20,18 @@
       <td>{{ task.priority }}</td>
     </tr>
   </table>
+  <a href="{% url "task_manager:task-update" pk=task.id %}" class="btn btn-primary" style="float: right">
+    Update
+  </a>
   <h3>Work on this task:</h3>
   {% for worker in task.assignees.all %}
     <ul>
-      <li>{{ worker.username }}</li>
-      <li>{{ worker.first_name }}</li>
-      <li>{{ worker.last_name }}</li>
-      <li>{{ worker.position }}</li>
+      <li><strong>Username: </strong>{{ worker.username }}</li>
+      <li><strong>First name: </strong>{{ worker.first_name }}</li>
+      <li><strong>Last name: </strong>{{ worker.last_name }}</li>
+      <li><strong>Position: </strong>{{ worker.position }}</li>
     </ul>
     <hr>
   {% endfor %}
+  <a href="{% url "task_manager:task-list" %}" class="btn btn-secondary">Return</a>
 {% endblock %}

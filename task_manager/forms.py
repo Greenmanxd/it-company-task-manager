@@ -20,7 +20,7 @@ class WorkerPositionUpdateForm(forms.ModelForm):
         fields = ["position"]
 
 
-class TaskCreateForm(forms.ModelForm):
+class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
@@ -31,6 +31,7 @@ class TaskCreateForm(forms.ModelForm):
             'priority',
             'deadline',
             'assignees',
+            'is_completed',
         ]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
