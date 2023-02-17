@@ -83,6 +83,12 @@ class TaskUpdateView(generic.UpdateView):
     success_url = reverse_lazy("task_manager:task-list")
 
 
+class TaskDeleteView(generic.DeleteView):
+    model = Task
+    success_url = reverse_lazy("task_manager:task-list")
+    template_name = "task_manager/task_confirm_delete.html"
+
+
 def toggle_status(request, pk):
     status = Task.objects.get(id=pk)
     status.is_completed ^= True

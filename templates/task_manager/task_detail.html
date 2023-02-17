@@ -23,6 +23,9 @@
   <a href="{% url "task_manager:task-update" pk=task.id %}" class="btn btn-primary" style="float: right">
     Update
   </a>
+  <a href="{% url "task_manager:task-delete" pk=task.id %}" class="btn btn-danger">
+    Delete
+  </a>
   <h3>Work on this task:</h3>
   {% for worker in task.assignees.all %}
     <ul>
