@@ -8,7 +8,7 @@
     {% csrf_token %}
     {{ form|crispy }}
 
-    <input type="submit" value="Submit" class="btn btn-primary">
+    {% include "includes/submit_btn.html" %}
     <a href="{% url "task_manager:task-type-list" %}" class="btn btn-secondary">
       Return
     </a>
