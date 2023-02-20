@@ -37,6 +37,7 @@ class WorkerListView(generic.ListView):
     model = Worker
     paginate_by = 5
     template_name = "task_manager/worker_list.html"
+    queryset = Worker.objects.select_related("position")
 
 
 class WorkerDetailView(generic.DetailView):
@@ -64,11 +65,13 @@ class TaskListView(generic.ListView):
     model = Task
     paginate_by = 5
     template_name = "task_manager/task_list.html"
+    queryset = Task.objects.select_related("task_type")
 
 
 class TaskDetailView(generic.DetailView):
     model = Task
     template_name = "task_manager/task_detail.html"
+    queryset = Task.objects.prefetch_related("assignees__task")
 
 
 class TaskCreateView(generic.CreateView):
