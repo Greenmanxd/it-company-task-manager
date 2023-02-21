@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -97,7 +98,7 @@ def toggle_status(request, pk):
     status = Task.objects.get(id=pk)
     status.is_completed ^= True
     status.save()
-    return redirect(reverse_lazy("task_manager:task-list"))
+    return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
 
 class TaskTypeView(generic.ListView):
