@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
@@ -71,7 +72,7 @@ class TaskListView(generic.ListView):
 class TaskDetailView(generic.DetailView):
     model = Task
     template_name = "task_manager/task_detail.html"
-    queryset = Task.objects.prefetch_related("assignees__task")
+    queryset = Task.objects.prefetch_related("assignees__position")
 
 
 class TaskCreateView(generic.CreateView):
