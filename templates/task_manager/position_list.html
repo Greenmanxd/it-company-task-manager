@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <a href="{% url "task_manager:position-create" %}" class="btn btn-primary">Create</a>
+  {% if position_list %}
+    {% for position in position_list %}
+      <br>
+      <hr>
+      {{ position.name }}
+    {% endfor %}
+  {% else %}
+    <h4>There is no positions</h4>
+  {% endif %}
+{% endblock %}

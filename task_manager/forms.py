@@ -11,6 +11,7 @@ class WorkerCreationForm(UserCreationForm):
             "first_name",
             "last_name",
             "position",
+            "is_superuser",
         )
 
 
@@ -44,4 +45,6 @@ class TaskForm(forms.ModelForm):
                     'placeholder': 'Select a date',
                     'type': 'date'
                 }),
+
         }
+

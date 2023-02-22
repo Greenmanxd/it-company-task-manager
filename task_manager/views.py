@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -81,11 +81,22 @@ class TaskCreateView(generic.CreateView):
     form_class = TaskForm
     success_url = reverse_lazy("task_manager:task-list")
 
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super(TaskCreateView, self).form_valid(form)
+
 
 class TaskUpdateView(generic.UpdateView):
     model = Task
     form_class = TaskForm
     success_url = reverse_lazy("task_manager:task-list")
+
+    def post(self, request, *args, **kwargs):
+        super(TaskUpdateView, self).post(request, *args, **kwargs)
+        task = Task.objects.get(pk=kwargs["pk"])
+        task.modified_by = request.user
+        task.save()
+        return redirect(reverse_lazy("task_manager:task-list"))
 
 
 class TaskDeleteView(generic.DeleteView):
@@ -125,3 +136,15 @@ class TaskTypeDeleteView(generic.DeleteView):
     model = TaskType
     success_url = reverse_lazy("task_manager:task-type-list")
     template_name = "task_manager/task_type_confirm_delete.html"
+
+
+class PositionListView(generic.ListView):
+    model = Position
+    template_name = "task_manager/position_list.html"
+
+
+class PositionCreateView(generic.CreateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("task_manager:position-list")
+    template_name = "task_manager/position_form.html"
