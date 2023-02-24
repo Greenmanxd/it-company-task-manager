@@ -3,9 +3,11 @@
 
 
 {% block content %}
+  <h2>{{ object|yesno:"Update, Create" }} position: </h2>
   <form action="" method="post" novalidate>
     {% csrf_token %}
     {{ form|crispy }}
     {% include "includes/submit_btn.html" %}
+    <a href="{% url "task_manager:position-list" %}" class="btn btn-secondary">Return</a>
   </form>
 {% endblock %}

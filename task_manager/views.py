@@ -60,7 +60,7 @@ class WorkerPositionUpdateView(generic.UpdateView):
 
 class WorkerDeleteView(generic.DeleteView):
     model = Worker
-    success_url = reverse_lazy("")
+    success_url = reverse_lazy("task_manager:worker-list")
 
 
 class TaskListView(generic.ListView):
@@ -148,3 +148,14 @@ class PositionCreateView(generic.CreateView):
     fields = "__all__"
     success_url = reverse_lazy("task_manager:position-list")
     template_name = "task_manager/position_form.html"
+
+
+class PositionUpdateView(generic.UpdateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("task_manager:position-list")
+
+
+class PositionDeleteView(generic.DeleteView):
+    model = Position
+    success_url = reverse_lazy("task_manager:position-list")

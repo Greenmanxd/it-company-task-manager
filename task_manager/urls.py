@@ -19,6 +19,8 @@ from task_manager.views import (
     toggle_status,
     PositionListView,
     PositionCreateView,
+    PositionUpdateView,
+    PositionDeleteView
 )
 
 urlpatterns = [
@@ -43,7 +45,9 @@ urlpatterns = [
     path("task-type/<int:pk>/delete/", TaskTypeDeleteView.as_view(), name="task-type-delete"),
 
     path("position/", PositionListView.as_view(), name="position-list"),
-    path("position/create/", PositionCreateView.as_view(), name="position-create")
+    path("position/create/", PositionCreateView.as_view(), name="position-create"),
+    path("position/<int:pk>/update/", PositionUpdateView.as_view(), name="position-update"),
+    path("position/<int:pk>/delete/", PositionDeleteView.as_view(), name="position-delete"),
 ]
 
 
