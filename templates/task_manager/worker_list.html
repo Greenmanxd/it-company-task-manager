@@ -1,8 +1,13 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 
 {% block content %}
-  <a href="{% url "task_manager:worker-create" %}" class="btn btn-primary">Create</a>
+  <form action="" method="get" class="form-check-inline">
+    {{ search_form|crispy }}
+    <input type="submit" value="Search" class="btn btn-secondary">
+  </form>
+  <a href="{% url "task_manager:worker-create" %}" class="btn btn-primary" style="float: right">Create</a>
   {% if worker_list %}
     <table class="table">
       <tr>

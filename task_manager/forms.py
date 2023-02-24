@@ -15,6 +15,17 @@ class WorkerCreationForm(UserCreationForm):
         )
 
 
+class WorkerSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        label="",
+        required=False,
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by username..."}
+        )
+    )
+
+
 class WorkerPositionUpdateForm(forms.ModelForm):
     class Meta:
         model = Worker

@@ -7,7 +7,7 @@ from django.views import generic
 from task_manager.forms import (
     WorkerCreationForm,
     WorkerPositionUpdateForm,
-    TaskForm,
+    TaskForm, WorkerSearchForm,
 )
 from task_manager.models import Task, TaskType, Worker, Position
 
@@ -40,6 +40,28 @@ class WorkerListView(generic.ListView):
     paginate_by = 5
     template_name = "task_manager/worker_list.html"
     queryset = Worker.objects.select_related("position")
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(WorkerListView, self).get_context_data(**kwargs)
+
+        username = self.request.GET.get("username", "")
+
+        context["search_form"] = WorkerSearchForm(initial={
+            "username": username
+        })
+
+        return context
+
+    def get_queryset(self):
+        queryset = Worker.objects.select_related("position")
+
+        form = WorkerSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                username__icontains=form.cleaned_data["username"]
+            )
+        return queryset
 
 
 class WorkerDetailView(generic.DetailView):
