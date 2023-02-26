@@ -1,6 +1,8 @@
 <ul class="sidebar-nav list-group">
   {% if user.is_authenticated %}
-    <h3><strong>User:</strong> <a href="{% url "task_manager:worker-detail" pk=user.id %}">{{ user.username }}</a></h3>
+    <h3>
+      <strong>User:</strong> <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
+    </h3>
     <li><strong><a href="{% url "logout" %}" class="btn btn-primary">Logout</a></strong></li>
     <br>
   {% else %}
