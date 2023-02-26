@@ -92,7 +92,13 @@ class TaskListView(generic.ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(TaskListView, self).get_context_data(**kwargs)
 
-        context["search_form"] = TaskSearchForm()
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = TaskSearchForm(
+            initial={
+                "name": name
+            }
+        )
 
         return context
 
