@@ -105,12 +105,14 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Task.objects.select_related("task_type")
+        queryset = Task.objects.all().select_related("task_type")
 
         form = TaskSearchForm(self.request.GET)
 
         if form.is_valid():
-            queryset = Task.objects.filter(name__icontains=form.cleaned_data["name"])
+            return queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
 
         return queryset
 

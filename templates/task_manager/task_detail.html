@@ -10,6 +10,8 @@
       <th>Completed</th>
       <th>Deadline</th>
       <th>Priority</th>
+      <th>Created by</th>
+      <th>Created on</th>
       <th>Modified on</th>
       <th>Modified by</th>
     </tr>
@@ -20,6 +22,8 @@
       <td>{{ task.is_completed }}</td>
       <td>{{ task.deadline }}</td>
       <td>{{ task.priority }}</td>
+      <td>{{ task.created_by.username }}</td>
+      <td>{{ task.created_on }}</td>
       <td>{{ task.modified_on }}</td>
       <td>{{ task.modified_by.username }}</td>
     </tr>
@@ -33,7 +37,7 @@
   <a href="{% url "task_manager:task-delete" pk=task.id %}" class="btn btn-danger">
     Delete
   </a>
-  <h3>Work on this task:</h3>
+  <h3>{{ task.is_completed|yesno:"Worked, Working" }} on this task:</h3>
   {% for worker in task.assignees.all %}
     <ul>
       <li><strong>Username: </strong>{{ worker.username }}</li>

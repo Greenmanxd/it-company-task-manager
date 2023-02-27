@@ -14,8 +14,6 @@
     <table class="table">
       <tr>
         <th>ID</th>
-        <th>Created by</th>
-        <th>Created on</th>
         <th>Name</th>
         <th>Description</th>
         <th>Task type</th>
@@ -25,8 +23,6 @@
       {% for task in task_list %}
         <tr>
           <td>{{ task.id }}</td>
-          <td>{{ task.created_by.username }}</td>
-          <td>{{ task.created_on }}</td>
           <td><a href="{% url "task_manager:task-detail" pk=task.id %}">{{ task.name }}</a></td>
           <td>{{ task.description }}</td>
           <td>{{ task.task_type }}</td>
