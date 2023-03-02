@@ -4,7 +4,7 @@
 
 {% block content %}
   <a href="{% url "task_manager:worker-create" %}" class="btn btn-primary link-to-page" style="float: right">Create</a>
-  <form action="" method="get" class="d-flex flex-row align-items-center flex-wrap mt-4">
+  <form action="" method="get" class="d-flex flex-row align-items-center flex-wrap mt-7">
     {{ search_form|crispy }}
     <input type="submit" value="Search" class="btn btn-secondary">
   </form>

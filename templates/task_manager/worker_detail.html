@@ -2,12 +2,14 @@
 
 
 {% block content %}
-  <a href="{% url "task_manager:worker-delete" pk=worker.id %}" class="btn btn-danger" style="float: right">
-  Delete
-  </a>
-  <a href="{% url "task_manager:worker-update" pk=worker.id %}" class="btn btn-primary" style="float: right">
-    Update Position
-  </a>
+  <div class="mt-7">
+    <a href="{% url "task_manager:worker-delete" pk=worker.id %}" class="btn btn-danger" style="float: right">
+      Delete
+    </a>
+    <a href="{% url "task_manager:worker-update" pk=worker.id %}" class="btn btn-primary" style="float: right">
+      Update Position
+    </a>
+  </div>
   <table class="table align-items-center mt-7">
     <tr>
       <td><strong>Username: </strong>{{ worker.username }}</td>

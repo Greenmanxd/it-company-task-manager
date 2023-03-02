@@ -4,10 +4,12 @@
 {% block content %}
   <form action="" method="post">
     {% csrf_token %}
-    <h1>Are you sure you want to be fired?</h1>
-    <input type="submit" value="Yes" class="btn btn-danger">
-    <a href="{% url "task_manager:worker-detail" pk=worker.id %}" class="btn btn-outline-success">
-      No
-    </a>
+    <div class="mt-7 text-center">
+      <h1>Are you sure you want to delete {{ worker.username }} worker?</h1>
+      <input type="submit" value="Yes" class="btn btn-danger">
+      <a href="{% url "task_manager:worker-detail" pk=worker.id %}" class="btn btn-outline-success">
+        No
+      </a>
+    </div>
   </form>
 {% endblock %}
