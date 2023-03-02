@@ -1,0 +1,18 @@
+{% extends "base-presentation.html" %}
+{% load crispy_forms_filters %}
+
+
+{% block content %}
+  <div class="m-lg-2">
+    <h1 class="mt-7 text-center">{{ object|yesno:"Update, Create" }} task type: </h1>
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+
+      {% include "includes/submit_btn.html" %}
+      <a href="{% url "task_manager:task-type-list" %}" class="btn btn-secondary">
+        Return
+      </a>
+    </form>
+  </div>
+{% endblock %}

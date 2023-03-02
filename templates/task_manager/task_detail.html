@@ -1,0 +1,46 @@
+{% extends "base-presentation.html" %}
+
+
+{% block content %}
+  <h3 class="d-lg-inline-block mt-7"><strong>{{ task.name }}</strong> :</h3>
+  <table class="table">
+    <tr>
+      <th>Description</th>
+      <th>Completed</th>
+      <th>Deadline</th>
+      <th>Created by</th>
+      <th>Created on</th>
+      <th>Modified by</th>
+      <th>Modified on</th>
+    </tr>
+    <tr>
+      <td>{{ task.description }}</td>
+      <td>{{ task.is_completed }}</td>
+      <td>{{ task.deadline }}</td>
+      <td>{{ task.created_by.username }}</td>
+      <td>{{ task.created_on }}</td>
+      <td>{{ task.modified_by.username }}</td>
+      <td>{{ task.modified_on }}</td>
+    </tr>
+  </table>
+  <a href="{% url "task_manager:task-update" pk=task.id %}" class="btn btn-primary" style="float: right">
+    Update
+  </a>
+  <h3>{{ task.is_completed|yesno:"Worked, Working" }} on this task:</h3>
+  {% for worker in task.assignees.all %}
+    <ul>
+      <li><strong>Username: </strong>{{ worker.username }}</li>
+      <li><strong>First name: </strong>{{ worker.first_name }}</li>
+      <li><strong>Last name: </strong>{{ worker.last_name }}</li>
+      <li><strong>Position: </strong>{{ worker.position }}</li>
+    </ul>
+    <hr>
+  {% endfor %}
+  <a href="{% url "task_manager:task-list" %}" class="btn btn-secondary">Return</a>
+  <a href="{% url "task_manager:task-delete" pk=task.id %}" class="btn btn-danger" style="float: right">
+    Delete
+  </a>
+  <a href="{% url "task_manager:toggle_status" pk=task.id %}" class="btn btn-success" style="float: right">
+    {{ task.is_completed|yesno:"Not complete, Complete" }}
+  </a>
+{% endblock %}

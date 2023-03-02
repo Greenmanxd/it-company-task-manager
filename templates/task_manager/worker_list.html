@@ -1,0 +1,51 @@
+{% extends "base-presentation.html" %}
+{% load crispy_forms_filters %}
+
+
+{% block content %}
+  <a href="{% url "task_manager:worker-create" %}" class="btn btn-primary link-to-page" style="float: right">Create</a>
+  <form action="" method="get" class="d-flex flex-row align-items-center flex-wrap mt-7">
+    {{ search_form|crispy }}
+    <input type="submit" value="Search" class="btn btn-secondary">
+  </form>
+  {% if worker_list %}
+    <table class="table align-items-center mb-0 ">
+      <tr>
+        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Worker</th>
+        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Position</th>
+        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
+        <th class="text-secondary opacity-7"></th>
+      </tr>
+      {% for worker in worker_list %}
+        <tr>
+          <td>
+            <div class="d-flex px-2 py-1">
+              <div class="d-flex flex-column justify-content-center">
+                <h6 class="mb-0 text-sm">{{ worker.username }}</h6>
+                {% if worker.email %}
+                  <p class="text-xs text-secondary mb-0">{{ worker.email }}</p>
+                {% else %}
+                  <p class="text-xs text-secondary mb-0">email not provide</p>
+                {% endif %}
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="text-xs font-weight-bold mb-0">{{ worker.position }}</p>
+          </td>
+          <td class="align-middle text-center">
+            <span class="text-secondary text-xs font-weight-bold">{{ worker.date_joined.date }}</span>
+          </td>
+          <td class="align-middle">
+            <a href="{% url "task_manager:worker-detail" pk=worker.id %}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+              More
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    {% include "includes/pagination.html" %}
+  {% else %}
+    There are no workers
+  {% endif %}
+{% endblock %}

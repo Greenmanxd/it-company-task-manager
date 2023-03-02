@@ -1,0 +1,15 @@
+{% extends "base-presentation.html" %}
+{% load crispy_forms_filters %}
+
+
+{% block content %}
+  <div class="m-lg-2">
+    <h2 class="text-center mt-7">{{ object|yesno:"Update, Create" }} worker :</h2>
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+
+      {% include "includes/submit_btn.html" %}
+    </form>
+  </div>
+{% endblock %}

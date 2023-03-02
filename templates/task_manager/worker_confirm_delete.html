@@ -1,0 +1,15 @@
+{% extends "base-presentation.html" %}
+
+
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="mt-7 text-center">
+      <h1>Are you sure you want to delete {{ worker.username }} worker?</h1>
+      <input type="submit" value="Yes" class="btn btn-danger">
+      <a href="{% url "task_manager:worker-detail" pk=worker.id %}" class="btn btn-outline-success">
+        No
+      </a>
+    </div>
+  </form>
+{% endblock %}
