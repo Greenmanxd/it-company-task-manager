@@ -1,34 +1,46 @@
-{% extends "base.html" %}
+{% extends "base-presentation.html" %}
 {% load crispy_forms_filters %}
 
 
 {% block content %}
-  <form action="" method="get" class="form-check-inline">
+  <a href="{% url "task_manager:worker-create" %}" class="btn btn-primary link-to-page" style="float: right">Create</a>
+  <form action="" method="get" class="d-flex flex-row align-items-center flex-wrap mt-4">
     {{ search_form|crispy }}
     <input type="submit" value="Search" class="btn btn-secondary">
   </form>
-  <a href="{% url "task_manager:worker-create" %}" class="btn btn-primary" style="float: right">Create</a>
   {% if worker_list %}
-    <table class="table">
+    <table class="table align-items-center mb-0 ">
       <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Position</th>
+        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Worker</th>
+        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Position</th>
+        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
+        <th class="text-secondary opacity-7"></th>
       </tr>
       {% for worker in worker_list %}
         <tr>
-          <td>{{ worker.id }}</td>
-          <td><a href="{% url "task_manager:worker-detail" worker.id %}">{{ worker.username }}</a></td>
-          {% if worker.first_name and worker.last_name %}
-            <td>{{ worker.first_name }}</td>
-            <td>{{ worker.last_name }}</td>
-          {% else %}
-            <td>Not provide</td>
-            <td>Not provide</td>
-          {% endif %}
-          <td>{{ worker.position }}</td>
+          <td>
+            <div class="d-flex px-2 py-1">
+              <div class="d-flex flex-column justify-content-center">
+                <h6 class="mb-0 text-sm">{{ worker.username }}</h6>
+                {% if worker.email %}
+                  <p class="text-xs text-secondary mb-0">{{ worker.email }}</p>
+                {% else %}
+                  <p class="text-xs text-secondary mb-0">email not provide</p>
+                {% endif %}
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="text-xs font-weight-bold mb-0">{{ worker.position }}</p>
+          </td>
+          <td class="align-middle text-center">
+            <span class="text-secondary text-xs font-weight-bold">{{ worker.date_joined.date }}</span>
+          </td>
+          <td class="align-middle">
+            <a href="{% url "task_manager:worker-detail" pk=worker.id %}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+              More
+            </a>
+          </td>
         </tr>
       {% endfor %}
     </table>

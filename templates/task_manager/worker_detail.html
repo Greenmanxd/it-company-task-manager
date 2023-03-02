@@ -1,18 +1,22 @@
-{% extends "base.html" %}
+{% extends "base-presentation.html" %}
 
 
 {% block content %}
-  <a href="{% url "task_manager:worker-delete" pk=worker.id %}" class="btn btn-danger">
+  <a href="{% url "task_manager:worker-delete" pk=worker.id %}" class="btn btn-danger" style="float: right">
   Delete
   </a>
-  <a href="{% url "task_manager:worker-update" pk=worker.id %}" class="btn btn-primary">
+  <a href="{% url "task_manager:worker-update" pk=worker.id %}" class="btn btn-primary" style="float: right">
     Update Position
   </a>
-  <p><strong>Username: </strong>{{ worker.username }}</p>
-  <p><strong>First name: </strong>{{ worker.first_name }}</p>
-  <p><strong>Last name: </strong>{{ worker.last_name }}</p>
-  <p><strong>Position: </strong>{{ worker.position }}</p>
-  <p><strong>Admin: </strong>{{ worker.is_superuser }}</p>
+  <table class="table align-items-center mt-7">
+    <tr>
+      <td><strong>Username: </strong>{{ worker.username }}</td>
+      <td><strong>First name: </strong>{{ worker.first_name }}</td>
+      <td><strong>Last name: </strong>{{ worker.last_name }}</td>
+      <td><strong>Position: </strong>{{ worker.position }}</td>
+      <td><strong>Admin: </strong>{{ worker.is_superuser }}</td>
+    </tr>
+  </table>
   <h3>All tasks:</h3>
   <hr>
   {% for task in worker.tasks.all %}

@@ -1,37 +1,48 @@
-{% extends "base.html" %}
+{% extends "base-presentation.html" %}
 {% load crispy_forms_filters %}
 
 
 {% block content %}
-  <a href="{% url "task_manager:task-create" %}" class="btn btn-primary" style="float: right">
+  <a href="{% url "task_manager:task-create" %}" class="btn btn-primary link-to-page" style="float: right">
     Create
   </a>
   {% if task_list %}
-    <form action="" method="get" class="form-check-inline">
+    <form action="" method="get" class="d-flex flex-row align-items-center flex-wrap mt-4">
       {{ search_form|crispy }}
       <input type="submit" value="Search" class="btn btn-secondary">
     </form>
-    <table class="table">
+    <table class="table align-items-center mb-0 mt-2">
       <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Task type</th>
-        <th>Deadline</th>
-        <th>Is Completed</th>
+        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project</th>
+        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
+        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th>
+        <th></th>
       </tr>
       {% for task in task_list %}
         <tr>
-          <td>{{ task.id }}</td>
-          <td><a href="{% url "task_manager:task-detail" pk=task.id %}">{{ task.name }}</a></td>
-          <td>{{ task.description }}</td>
-          <td>{{ task.task_type }}</td>
-          <td>{{ task.deadline }}</td>
-          <td>{{ task.is_completed }}</td>
           <td>
-            <a href="{% url "task_manager:toggle_status" pk=task.id %}" class="btn btn-success">
-              {{ task.is_completed|yesno:"Not complete, Complete" }}
-            </a>
+            <div class="d-flex px-2">
+              <div class="my-auto">
+                <h6 class="mb-0 text-sm">{{ task.name }}</h6>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="text-sm font-weight-bold mb-0">{{ task.description }}</p>
+          </td>
+          <td>
+            <span class="text-xs font-weight-bold">{{ task.priority }}</span>
+          </td>
+          <td class="align-middle text-center">
+            <div class="d-flex align-items-center justify-content-center">
+              <span class="me-2 text-xs font-weight-bold">{{ task.is_completed }}</span>
+            </div>
+          </td>
+          <td class="align-middle">
+              <a href="{% url "task_manager:task-detail" pk=task.id %}">
+                More
+              </a>
           </td>
         </tr>
       {% endfor %}

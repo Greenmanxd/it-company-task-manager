@@ -40,7 +40,7 @@ class Task(models.Model):
     is_completed = models.BooleanField(default=False)
     created_on = models.DateField(auto_now_add=True)
     created_by = models.ForeignKey(Worker, on_delete=models.CASCADE)
-    modified_on = models.DateField(auto_now=True, blank=True, null=True)
+    modified_on = models.DateTimeField(auto_now=True, blank=True, null=True)
     modified_by = models.ForeignKey(
         Worker,
         on_delete=models.DO_NOTHING,

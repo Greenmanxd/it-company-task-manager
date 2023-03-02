@@ -1,9 +1,17 @@
-{% extends "base.html" %}
+{% extends "base-presentation.html" %}
 {% load crispy_forms_filters %}
 
 
 {% block content %}
-  <p>Logged out!</p>
-
-  <a href="{% url "login" %}">Login again.</a>
+    <hr class="horizontal dark mb-5">
+    <div class="container">
+      <div class=" row">
+        <div class="text-center">
+          <h6 class="font-weight-bolder text-secondary mt-5">Logged out!</h6>
+          <h3 class="my-4 mb-3">
+            <a href="{% url "login" %}">Login again</a>
+          </h3>
+        </div>
+      </div>
+    </div>
 {% endblock %}
