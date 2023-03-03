@@ -19,15 +19,18 @@
       <td><strong>Admin: </strong>{{ worker.is_superuser }}</td>
     </tr>
   </table>
-  <h3>All tasks:</h3>
-  <hr>
-  {% for task in worker.tasks.all %}
-    <h4><strong>Task name: </strong><a href="{% url "task_manager:task-detail" pk=task.id %}">{{ task.name }}</a></h4>
-    <h4><strong>Task description: </strong>{{ task.description }}</h4>
-    <h4><strong>Task completed: </strong>{{ task.is_completed }}</h4><br>
+  <div class="text-center">
+    <h3>All tasks:</h3>
     <hr>
-  {% endfor %}
-  <a href="{% url "task_manager:worker-list" %}" class="btn btn-secondary">
-    Return
-  </a>
+    {% for task in worker.tasks.all %}
+
+      <h4><strong>Task name: </strong><a href="{% url "task_manager:task-detail" pk=task.id %}">{{ task.name }}</a></h4>
+      <h4><strong>Task description: </strong>{{ task.description }}</h4>
+      <h4><strong>Task completed: </strong>{{ task.is_completed }}</h4><br>
+      <hr>
+    {% endfor %}
+    <a href="{% url "task_manager:worker-list" %}" class="btn btn-secondary">
+      Return
+    </a>
+  </div>
 {% endblock %}
