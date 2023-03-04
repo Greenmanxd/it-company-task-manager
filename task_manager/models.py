@@ -6,14 +6,14 @@ from django.urls import reverse
 class TaskType(models.Model):
     name = models.CharField(max_length=255)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
 class Position(models.Model):
     name = models.CharField(max_length=255)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -24,7 +24,7 @@ class Worker(AbstractUser):
         default=1
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.first_name and self.last_name:
             return f"{self.username} ({self.first_name} {self.last_name}) {self.position}"
         return f"{self.username} {self.position}"
@@ -67,5 +67,5 @@ class Task(models.Model):
 
     assignees = models.ManyToManyField(Worker, related_name="tasks")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name}: {self.description}"

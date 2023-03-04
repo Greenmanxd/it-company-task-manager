@@ -8,7 +8,9 @@ from django.views import generic
 from task_manager.forms import (
     WorkerCreationForm,
     WorkerPositionUpdateForm,
-    TaskForm, WorkerSearchForm, TaskSearchForm,
+    TaskForm,
+    WorkerSearchForm,
+    TaskSearchForm,
 )
 from task_manager.models import Task, TaskType, Worker, Position
 
