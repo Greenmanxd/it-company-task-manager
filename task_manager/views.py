@@ -146,11 +146,15 @@ class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     template_name = "task_manager/task_confirm_delete.html"
 
 
-def toggle_status(request, pk):
-    status = Task.objects.get(id=pk)
-    status.is_completed ^= True
-    status.save()
-    return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
+class TaskCompleteUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Task
+    success_url = reverse_lazy("task_manager:task-list")
+
+    def get(self, request, *args, **kwargs):
+        status = Task.objects.get(pk=kwargs["pk"])
+        status.is_completed = not status.is_completed
+        status.save()
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
 
 class TaskTypeView(LoginRequiredMixin, generic.ListView):

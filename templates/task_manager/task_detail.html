@@ -40,7 +40,7 @@
   <a href="{% url "task_manager:task-delete" pk=task.id %}" class="btn btn-danger" style="float: right">
     Delete
   </a>
-  <a href="{% url "task_manager:toggle_status" pk=task.id %}" class="btn btn-success" style="float: right">
+  <a href="{% url "task_manager:task-complete-toggle" pk=task.id %}" class="btn btn-success" style="float: right">
     {{ task.is_completed|yesno:"Not complete, Complete" }}
   </a>
 {% endblock %}
