@@ -26,21 +26,21 @@
   <a href="{% url "task_manager:task-update" pk=task.id %}" class="btn btn-primary" style="float: right">
     Update
   </a>
-  <h3>{{ task.is_completed|yesno:"Worked, Working" }} on this task:</h3>
-  {% for worker in task.assignees.all %}
-    <ul>
-      <li><strong>Username: </strong>{{ worker.username }}</li>
-      <li><strong>First name: </strong>{{ worker.first_name }}</li>
-      <li><strong>Last name: </strong>{{ worker.last_name }}</li>
-      <li><strong>Position: </strong>{{ worker.position }}</li>
-    </ul>
-    <hr>
-  {% endfor %}
-  <a href="{% url "task_manager:task-list" %}" class="btn btn-secondary">Return</a>
+  <div class="m-lg-4">
+    <h3>{{ task.is_completed|yesno:"Worked, Working" }} on this task:</h3>
+    {% for worker in task.assignees.all %}
+      <h4><strong>Username: </strong>{{ worker.username }}</h4>
+      <h4><strong>First name: </strong>{{ worker.first_name }}</h4>
+      <h4><strong>Last name: </strong>{{ worker.last_name }}</h4>
+      <h4><strong>Position: </strong>{{ worker.position }}</h4>
+      <hr>
+    {% endfor %}
+    <a href="{% url "task_manager:task-list" %}" class="btn btn-secondary">Return</a>
+  </div>
   <a href="{% url "task_manager:task-delete" pk=task.id %}" class="btn btn-danger" style="float: right">
     Delete
   </a>
-  <a href="{% url "task_manager:toggle_status" pk=task.id %}" class="btn btn-success" style="float: right">
+  <a href="{% url "task_manager:task-complete-toggle" pk=task.id %}" class="btn btn-success" style="float: right">
     {{ task.is_completed|yesno:"Not complete, Complete" }}
   </a>
 {% endblock %}
