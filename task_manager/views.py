@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
@@ -16,7 +17,7 @@ from task_manager.models import Task, TaskType, Worker, Position
 
 
 @login_required
-def index(request):
+def index(request: HttpRequest) -> HttpResponse:
 
     num_tasks = Task.objects.count()
     in_proces_tasks = Task.objects.filter(is_completed=False).count()
@@ -36,7 +37,7 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
     template_name = "task_manager/worker_list.html"
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(WorkerListView, self).get_context_data(**kwargs)
 
         username = self.request.GET.get("username", "")
@@ -47,7 +48,7 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
 
         return context
 
-    def get_queryset(self):
+    def get_queryset(self) -> QuerySet:
         queryset = Worker.objects.select_related("position")
 
         form = WorkerSearchForm(self.request.GET)
@@ -85,7 +86,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
     template_name = "task_manager/task_list.html"
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(TaskListView, self).get_context_data(**kwargs)
 
         name = self.request.GET.get("name", "")
@@ -98,7 +99,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
 
         return context
 
-    def get_queryset(self):
+    def get_queryset(self) -> QuerySet:
         queryset = Task.objects.all().select_related("task_type")
 
         form = TaskSearchForm(self.request.GET)
@@ -132,7 +133,7 @@ class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = TaskForm
     success_url = reverse_lazy("task_manager:task-list")
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         super(TaskUpdateView, self).post(request, *args, **kwargs)
         task = Task.objects.get(pk=kwargs["pk"])
         task.modified_by = request.user
@@ -150,7 +151,7 @@ class TaskCompleteUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Task
     success_url = reverse_lazy("task_manager:task-list")
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         status = Task.objects.get(pk=kwargs["pk"])
         status.is_completed = not status.is_completed
         status.save()
