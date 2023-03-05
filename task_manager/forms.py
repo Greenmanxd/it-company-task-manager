@@ -69,4 +69,3 @@ class TaskSearchForm(forms.Form):
             {"placeholder": "Search by name..."}
         )
     )
-
