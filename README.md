@@ -1,9 +1,36 @@
-# it-company-task-manager
+# It Company Task Manager
 
+Django Project for managing tasks
+
+## Check this out!
+
+[Task Manager project deployed to Heroku](LINK_HERE)
+
+## Installation
+
+Python3 must be already installed
+
+```shell
+git clone https://github.com/IvanMayor/it-company-task-manager.git
+cd it-company-task-manager
+python -m venv venv
+source venv/Scripts/activate
+pip install -r requirements.txt
+python manage.py runserver  # starts Django server
+```
 
 - You can Login as superuser:
   - Login: 'Admin'
   - Password: 'Admin12345'
+
+## Features
+
+
+* Authentication functionality for Worker/User
+* Managing Tasks workers positions task-types
+
+
+## Demo
 
 - Data base structure:
 ![image](https://user-images.githubusercontent.com/110604336/222494254-39d142c4-4c37-4979-90d7-8d89b31ca1d5.png)
@@ -50,4 +77,3 @@
 
 - Position list view page:
 ![image](https://user-images.githubusercontent.com/110604336/222662313-1309b5f5-1d64-4fd8-9782-1e86a4d29fa5.png)
-
