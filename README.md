@@ -4,7 +4,7 @@ Django Project for managing tasks
 
 ## Check this out!
 
-[Task Manager project deployed to Heroku](https://it-company-task-manager-itp8.onrender.com)
+[Task Manager project deployed to render.com](https://it-company-task-manager-itp8.onrender.com)
 
 ## Installation
 
