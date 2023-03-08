@@ -4,7 +4,7 @@ Django Project for managing tasks
 
 ## Check this out!
 
-[Task Manager project deployed to Heroku](LINK_HERE)
+[Task Manager project deployed to render.com](https://it-company-task-manager-itp8.onrender.com)
 
 ## Installation
 
@@ -20,8 +20,8 @@ python manage.py runserver  # starts Django server
 ```
 
 - You can Login as superuser:
-  - Login: 'Admin'
-  - Password: 'Admin12345'
+  - Login: 'Admin-user'
+  - Password: 'Admin-user12345'
 
 ## Features
 
