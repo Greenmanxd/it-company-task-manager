@@ -33,7 +33,7 @@ python manage.py runserver  # starts Django server
 ## Demo
 
 - Data base structure:
-![image](https://user-images.githubusercontent.com/110604336/222494254-39d142c4-4c37-4979-90d7-8d89b31ca1d5.png)
+![image](staticfiles/diagram.jpg)
 
 - Login page:
 ![image](https://user-images.githubusercontent.com/110604336/222663779-24c09ea5-a123-424f-8aa0-a4120b301974.png)
