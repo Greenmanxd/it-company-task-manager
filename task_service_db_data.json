@@ -1,0 +1,188 @@
+[
+{
+    "model": "task_manager.tasktype",
+    "pk": 1,
+    "fields": {
+        "name": "Bug"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 2,
+    "fields": {
+        "name": "New Feature"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 3,
+    "fields": {
+        "name": "QA"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 4,
+    "fields": {
+        "name": "Breaking Change"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 5,
+    "fields": {
+        "name": "Refactoring"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 1,
+    "fields": {
+        "name": "Developer"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 3,
+    "fields": {
+        "name": "Project Manager"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 4,
+    "fields": {
+        "name": "QA"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 5,
+    "fields": {
+        "name": "Designer"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 6,
+    "fields": {
+        "name": "DevOps"
+    }
+},
+{
+    "model": "task_manager.worker",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$ohwVGXL3CIvA4SZOOzptqn$bbI0EtJEJfqHCWLcE33Bg23k7L+EbwehJzr6UCuc93M=",
+        "last_login": "2023-03-09T17:23:49.866Z",
+        "is_superuser": true,
+        "username": "Admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@admin.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-03-09T17:23:38.915Z",
+        "position": 3,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$jLnHybEKl1MH8xbCPN1yUk$nzPjIDjSidlxAr3J6dCnnUtM7fGzgLvB1PNDsKQkxEw=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Test",
+        "first_name": "Test name",
+        "last_name": "Test last name",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-03-09T19:33:35.066Z",
+        "position": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$DxapA9iDxux9BxbAIvyiRE$wyMkO3Za/62aFrWhw6tVnmERuZ4UBGlLL7/mcqp+BTY=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Test-user1",
+        "first_name": "User1",
+        "last_name": "User1",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-03-10T04:02:58.577Z",
+        "position": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$PQ3uYtEf4hXVU3aL1IwHkw$nswlJk1wO3jJA2Pgndbo9PBWJUcJRxzRdh2f4n7GAqA=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Test-User2",
+        "first_name": "User2",
+        "last_name": "User2",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-03-10T04:03:27.806Z",
+        "position": 5,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 1,
+    "fields": {
+        "name": "Google button",
+        "description": "Add sign-in with Google button",
+        "deadline": "2023-03-24",
+        "is_completed": false,
+        "created_on": "2023-03-09",
+        "created_by": 1,
+        "modified_on": "2023-03-10T04:01:11.697Z",
+        "modified_by": 1,
+        "priority": "HI",
+        "task_type": 2,
+        "assignees": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 2,
+    "fields": {
+        "name": "FIx Dashboard",
+        "description": "Fix Dashboard for Vacancies",
+        "deadline": "2023-03-13",
+        "is_completed": false,
+        "created_on": "2023-03-10",
+        "created_by": 1,
+        "modified_on": "2023-03-10T04:02:00.176Z",
+        "modified_by": null,
+        "priority": "MED",
+        "task_type": 1,
+        "assignees": [
+            1,
+            2
+        ]
+    }
+}
+]
