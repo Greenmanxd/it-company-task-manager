@@ -16,6 +16,9 @@ cd it-company-task-manager
 python -m venv venv
 source venv/Scripts/activate
 pip install -r requirements.txt
+python manage.py loaddata task_manager_db_data.json
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver  # starts Django server
 ```
 
