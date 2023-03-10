@@ -24,6 +24,10 @@ class Worker(AbstractUser):
         default=1
     )
 
+    class Meta:
+        verbose_name = "Worker"
+        verbose_name_plural = "Workers"
+
     def __str__(self) -> str:
         if self.first_name and self.last_name:
             return f"{self.username} ({self.first_name} {self.last_name}) {self.position}"
