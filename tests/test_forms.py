@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 
 from task_manager.forms import WorkerCreationForm
@@ -7,7 +8,7 @@ from task_manager.models import Worker, Position
 class CreationFormTest(TestCase):
     def setUp(self) -> None:
         self.position = Position.objects.create(name="Developer")
-        self.user = Worker.objects.create_user(
+        self.user = get_user_model().objects.create_user(
             username="test_user",
             password="User12345",
         )
