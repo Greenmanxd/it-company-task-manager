@@ -73,10 +73,10 @@
     "model": "task_manager.worker",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$390000$ohwVGXL3CIvA4SZOOzptqn$bbI0EtJEJfqHCWLcE33Bg23k7L+EbwehJzr6UCuc93M=",
+        "password": "pbkdf2_sha256$390000$UBDVkI793oTOEDaDRyJlS8$+QLIKJxFI9druVJkgDiMzpCKaWKiIsMfhY3Y2khlPk0=",
         "last_login": "2023-03-09T17:23:49.866Z",
         "is_superuser": true,
-        "username": "Admin",
+        "username": "Admin-user",
         "first_name": "",
         "last_name": "",
         "email": "admin@admin.com",
